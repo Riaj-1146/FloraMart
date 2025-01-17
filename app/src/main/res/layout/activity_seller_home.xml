@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/back05"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flora Mart Admin Panel!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#3C7850"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage products, orders, and customer inquiries."
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#696969"
+        android:layout_marginBottom="17dp"/>
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Plant"
+        android:backgroundTint="@color/material_dynamic_primary10"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/insertButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert Plant"
+        android:layout_below="@id/deleteButton"
+        android:backgroundTint="@color/material_dynamic_primary10"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Plant"
+        android:backgroundTint="@color/material_dynamic_primary10"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Plant"
+        android:layout_below="@id/updateButton"
+        android:backgroundTint="@color/material_dynamic_primary10"
+        android:layout_marginBottom="20dp"/>
+
+
+</LinearLayout>

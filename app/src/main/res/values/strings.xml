@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Flora_Mart</string>
+    <string name="greeting_text">Greeting you to Flora_Mart</string>
+    <string name="aim_text">Our goal is to</string>
+    <string name="greeting_description">" "Make plant collection and care more accessible to fulfill the dream of a greener world." "</string>
+    <string name="start_button">Go with Flora_Mart</string>
+    <string name="start_button_desc">Start exploring Flora_Mart</string>
+    <string name="language_switch">Language</string>
+    <string name="language_switch_desc">Switch between English and Bangla</string>
+    <string name="greeting_image_desc">Greeting Image</string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "791031730873",
+    "project_id": "flora-mart",
+    "storage_bucket": "flora-mart.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791031730873:android:b8c7c17bb8ce2ee28cc168",
+        "android_client_info": {
+          "package_name": "com.example.flora_mart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpHA2HLhaXC14uMFpspMpsbnvksEpMs1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
