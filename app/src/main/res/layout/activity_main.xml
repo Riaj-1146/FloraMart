@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="15dp"
     android:background="@drawable/back04"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -13,10 +13,10 @@
 
         <ImageView
             android:id="@+id/img_greetingImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:src="@drawable/home_logo"
             android:contentDescription="@string/greeting_image_desc" />
 
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="15dp"
             android:layout_marginTop="0dp"
             android:text="@string/greeting_description"
             android:textColor="#000000"

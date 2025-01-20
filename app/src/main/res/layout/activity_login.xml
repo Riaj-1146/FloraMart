@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backg_05"
+    android:background="#EFE5DC"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
@@ -16,14 +16,13 @@
         android:layout_height="wrap_content"
         android:text="Sign in"
         android:textSize="35dp"
-        android:layout_margin="15dp"
+        android:layout_margin="25dp"
         android:textStyle="bold"
-        android:gravity="center"
-        />
+        android:gravity="center" />
 
     <EditText
         android:id="@+id/et_user_email"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="Enter your email"
         android:inputType="textEmailAddress"
@@ -32,57 +31,65 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/border" />
 
-
-
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_Give_password"
-            android:layout_width="match_parent"
+            android:id="@+id/et_user_password"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Enter password"
             android:inputType="textPassword"
             android:padding="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
+
     <Button
         android:id="@+id/bt_Login_Button"
-        android:layout_width="320dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Login"
         android:textSize="18sp"
-        android:backgroundTint="#3B52A7"
+        android:backgroundTint="#21C6AA"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="5mm" />
 
-    <TextView
-        android:id="@+id/tv_Instruction"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="Don't have an Account? Click Register "
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:layout_marginBottom="2dp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/bt_Register_Button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="18dp"
-        android:backgroundTint="#21C6AA"
-        android:layout_marginTop="2dp" />
+        <TextView
+            android:id="@+id/tv_Instruction_part1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="Don't have an Account?"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_Instruction_part2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="4dp"
+            android:text="Click Register"
+            android:textColor="#0D593A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </LinearLayout>
-
-
-
-
-
