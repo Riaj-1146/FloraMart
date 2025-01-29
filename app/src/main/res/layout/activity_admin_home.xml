@@ -17,22 +17,20 @@
         android:background="@drawable/border"/>
 
     <Button
-        android:id="@+id/btn_insert_tec"
+        android:id="@+id/btn_insert_plant"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Insert_Plant"
+        android:text="Insert Plant"
         android:layout_marginBottom="10dp"
         android:backgroundTint="#0A6E80"/>
 
     <Button
-        android:id="@+id/btn_view_tec"
+        android:id="@+id/btn_view_plant"
         android:layout_width="300dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="View_Plant\n Delete_plant and  Update_plant"
+        android:text="View Plant \n Delete Plant and Update Plant"
         android:backgroundTint="#0A6E80"/>
-
-
 
 </LinearLayout>

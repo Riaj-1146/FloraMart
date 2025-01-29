@@ -9,9 +9,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -93,7 +91,7 @@ public class login extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         if (email.equals(ADMIN_EMAIL) && password.equals(ADMIN_PASSWORD)) {
             progressBar.setVisibility(View.GONE); // Hide ProgressBar
-            Intent intent = new Intent(getApplicationContext(), Seller_home.class);
+            Intent intent = new Intent(getApplicationContext(),AdminHomeActivity.class);
             startActivity(intent);
             finish();
         }
@@ -104,13 +102,16 @@ public class login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null && user.isEmailVerified()) {
-                                Intent intent = new Intent(getApplicationContext(), buyer_home.class);
+                                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                                 startActivity(intent);
                                 finish();
-                            } else {
+                            }
+                            else {
                                 Toast.makeText(login.this, "Verify email first", Toast.LENGTH_SHORT).show();
                             }
-                        } else {
+                        }
+
+                        else {
                             Toast.makeText(login.this, "Login failed!", Toast.LENGTH_SHORT).show();
                         }
                     });
