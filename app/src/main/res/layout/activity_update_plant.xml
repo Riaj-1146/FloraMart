@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="To update, search for a plant by name"
-        android:textSize="26dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="16dp" />
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Plant Name"
-        android:textSize="27dp"
+        android:textSize="20sp"
         android:layout_marginBottom="10dp"
         android:background="@android:drawable/editbox_background" />
 
@@ -29,7 +29,7 @@
         android:id="@+id/text_view_plant_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Plant ID"
+        android:text="Plant ID"
         android:padding="8dp"
         android:background="@android:color/darker_gray"
         android:textColor="@android:color/white"
@@ -38,11 +38,11 @@
 
     <ImageView
         android:id="@+id/image_view_plant"
+        android:src="@drawable/demo_icon"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:scaleType="centerCrop"
-        android:layout_marginTop="16dp"
-         />
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/button_select_image"
@@ -51,6 +51,38 @@
         android:text="Select Image"
         android:backgroundTint="#4C5AA9"
         android:layout_marginTop="16dp" />
+
+    <!-- Category EditText -->
+    <EditText
+        android:id="@+id/edit_text_plant_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Category"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background" />
+
+    <!-- Price EditText -->
+    <EditText
+        android:id="@+id/edit_text_plant_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:inputType="numberDecimal"
+        android:background="@android:drawable/editbox_background" />
+
+    <!-- Quantity EditText -->
+    <EditText
+        android:id="@+id/edit_text_plant_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:background="@android:drawable/editbox_background" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,7 +105,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#2F6F1A"
-            android:text="Update Plant" />
+            android:text="Update Plant"
+            android:enabled="false" />
     </LinearLayout>
 
 </LinearLayout>

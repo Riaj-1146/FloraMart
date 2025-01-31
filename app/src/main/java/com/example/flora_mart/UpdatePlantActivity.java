@@ -23,11 +23,9 @@ public class UpdatePlantActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private EditText editTextName;
+    private EditText editTextName, editTextCategory, editTextPrice, editTextQuantity;
     private ImageView imageViewPlant;
-    private Button buttonUpdate;
-    private Button buttonSelectImage;
-    private Button buttonSearch;
+    private Button buttonUpdate, buttonSelectImage, buttonSearch;
     private TextView textViewPlantId;
 
     private DatabaseHelper databaseHelper;
@@ -39,6 +37,9 @@ public class UpdatePlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_plant);
 
         editTextName = findViewById(R.id.edit_text_plant_name);
+        editTextCategory = findViewById(R.id.edit_text_plant_category);
+        editTextPrice = findViewById(R.id.edit_text_plant_price);
+        editTextQuantity = findViewById(R.id.edit_text_plant_quantity);
         imageViewPlant = findViewById(R.id.image_view_plant);
         buttonUpdate = findViewById(R.id.button_update);
         buttonSelectImage = findViewById(R.id.button_select_image);
@@ -61,12 +62,17 @@ public class UpdatePlantActivity extends AppCompatActivity {
 
         Cursor cursor = databaseHelper.getPlantByName(plantName);
 
-        if (cursor != null && cursor.moveToFirst())
-        {
+        if (cursor != null && cursor.moveToFirst()) {
             int plantId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID));
+            String category = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_CATEGORY));
+            double price = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_PRICE));
+            int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_QUANTITY));
             byte[] image = cursor.getBlob(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_IMAGE));
 
             textViewPlantId.setText("Plant ID: " + plantId);
+            editTextCategory.setText(category);
+            editTextPrice.setText(String.valueOf(price));
+            editTextQuantity.setText(String.valueOf(quantity));
 
             if (image != null) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
@@ -74,9 +80,7 @@ public class UpdatePlantActivity extends AppCompatActivity {
                 plantImageByteArray = image;
             }
             cursor.close();
-        }
-        else
-        {
+        } else {
             Toast.makeText(this, "Plant not found", Toast.LENGTH_SHORT).show();
         }
     }
@@ -97,26 +101,36 @@ public class UpdatePlantActivity extends AppCompatActivity {
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
                 plantImageByteArray = byteArrayOutputStream.toByteArray();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void updateProduct() {
-
         String plantName = editTextName.getText().toString().trim();
+        String category = editTextCategory.getText().toString().trim();
+        String priceText = editTextPrice.getText().toString().trim();
+        String quantityText = editTextQuantity.getText().toString().trim();
 
-        if (plantName.isEmpty())
-        {
-            Toast.makeText(this, "Please give plant name", Toast.LENGTH_SHORT).show();
+        if (plantName.isEmpty() || category.isEmpty() || priceText.isEmpty() || quantityText.isEmpty()) {
+            Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        double price = Double.parseDouble(priceText);
+        int quantity = Integer.parseInt(quantityText);
 
         String plantIdText = textViewPlantId.getText().toString();
         int plantId = Integer.parseInt(plantIdText.replaceAll("\\D+", ""));
 
-        databaseHelper.updatePlant(plantId, plantName, plantImageByteArray);
+        // Update the plant in the database
+        boolean updated = databaseHelper.updatePlant(plantId, plantName, category, price, quantity, plantImageByteArray);
+
+        if (updated) {
+            Toast.makeText(this, "Plant updated successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error updating plant", Toast.LENGTH_SHORT).show();
+        }
     }
 }

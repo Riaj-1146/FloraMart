@@ -4,7 +4,7 @@
     android:padding="26dp"
     android:orientation="vertical">
 
-    <!-- First ImageView -->
+
     <ImageView
         android:id="@+id/iv_image1"
         android:layout_width="50dp"
@@ -15,7 +15,6 @@
         android:src="@drawable/home_logo"
         android:contentDescription="Image 1" />
 
-    <!-- Second ImageView -->
     <ImageView
         android:id="@+id/iv_image2"
         android:layout_width="50dp"
@@ -23,11 +22,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/cart"
-        android:background="#685454"
+        android:src="@drawable/ac"
+        android:background="#FAFAFA"
         android:contentDescription="Image 2" />
 
-    <!-- TextView -->
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
@@ -40,7 +39,6 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_plant"
         android:layout_width="match_parent"

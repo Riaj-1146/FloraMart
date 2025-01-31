@@ -31,8 +31,8 @@ public class ViewPlantActivity extends AppCompatActivity {
         recyclerViewPlant.setLayoutManager(new LinearLayoutManager(this));
         displayPlants();
 
-        buttonUpdate.setOnClickListener(v -> handleUpdate());
-        buttonDelete.setOnClickListener(v -> handleDelete());
+        buttonUpdate.setOnClickListener(v -> handleUpdate(null));
+        buttonDelete.setOnClickListener(v -> handleDelete(null));
     }
 
     @Override
@@ -47,12 +47,27 @@ public class ViewPlantActivity extends AppCompatActivity {
             List<Plant> plantList = new ArrayList<>();
 
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_NAME));
                 byte[] imageBytes = cursor.getBlob(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_IMAGE));
-                plantList.add(new Plant(name, imageBytes));
+                String category = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_CATEGORY));
+                double price = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_PRICE));
+                int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PLANT_QUANTITY));
+
+                plantList.add(new Plant(id, name, category, price, quantity, imageBytes));
             }
 
-            plantAdapter = new PlantAdapter(this, plantList);
+            plantAdapter = new PlantAdapter(this, plantList, new PlantAdapter.OnPlantClickListener() {
+                @Override
+                public void onUpdateClick(Plant plant) {
+                    handleUpdate(plant); // Update plant when clicked
+                }
+
+                @Override
+                public void onDeleteClick(Plant plant) {
+                    handleDelete(plant); // Delete plant when clicked
+                }
+            });
             recyclerViewPlant.setAdapter(plantAdapter);
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,14 +75,30 @@ public class ViewPlantActivity extends AppCompatActivity {
         }
     }
 
-    private void handleUpdate() {
+    private void handleUpdate(Plant plant) {
+        if (plant == null) {
+            Toast.makeText(this, "Please select a plant to update.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent = new Intent(ViewPlantActivity.this, UpdatePlantActivity.class);
+        intent.putExtra("PLANT_ID", plant.getId());
+        intent.putExtra("PLANT_NAME", plant.getName());
+        intent.putExtra("PLANT_IMAGE", plant.getImageBytes());
+        intent.putExtra("PLANT_CATEGORY", plant.getCategory());
+        intent.putExtra("PLANT_PRICE", plant.getPrice());
+        intent.putExtra("PLANT_QUANTITY", plant.getQuantity());
         startActivity(intent);
     }
 
-    private void handleDelete() {
-        Intent intent = new Intent(ViewPlantActivity.this, DeletePlantActivity.class);
-        startActivity(intent);
-        Toast.makeText(this, "Delete button clicked", Toast.LENGTH_SHORT).show();
+    private void handleDelete(Plant plant) {
+        if (plant == null) {
+            Toast.makeText(this, "Please select a plant to delete.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        databaseHelper.deletePlant(plant.getName());
+        displayPlants();
+        Toast.makeText(this, plant.getName() + " deleted successfully", Toast.LENGTH_SHORT).show();
     }
 }

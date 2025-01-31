@@ -18,12 +18,12 @@
 
     <ImageView
         android:id="@+id/img_image"
+        android:src="@drawable/demo_icon"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
-        android:background="#FBF8F8"
-         />
+        android:background="#FBF8F8" />
 
     <EditText
         android:id="@+id/et_plant_name"
@@ -32,7 +32,36 @@
         android:layout_marginTop="15dp"
         android:hint="Plant Name"
         android:background="@android:drawable/editbox_background"
-        android:textSize="30dp" />
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/et_plant_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Plant Category"
+        android:background="@android:drawable/editbox_background"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/et_plant_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Plant Price"
+        android:inputType="numberDecimal"
+        android:background="@android:drawable/editbox_background"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/et_plant_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Available Quantity"
+        android:inputType="number"
+        android:background="@android:drawable/editbox_background"
+        android:textSize="18dp" />
 
     <Button
         android:id="@+id/bt_choose_img"

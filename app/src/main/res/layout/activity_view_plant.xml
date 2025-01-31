@@ -3,21 +3,22 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- RecyclerView for displaying plants -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_plant"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/button_container" />
+        android:layout_above="@id/button_container"
+        android:paddingBottom="60dp"
+        android:clipToPadding="false" />
 
-    <!-- Button container at the bottom -->
     <LinearLayout
         android:id="@+id/button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/button_update"
@@ -25,7 +26,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#009688"
-            android:text="Update" />
+            android:text="Update"
+            android:textColor="@android:color/white"
+            android:elevation="4dp" />
 
         <Button
             android:id="@+id/button_delete"
@@ -33,6 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#E91E63"
-            android:text="Delete" />
+            android:text="Delete"
+            android:textColor="@android:color/white"
+            android:elevation="4dp" />
     </LinearLayout>
+
 </RelativeLayout>
